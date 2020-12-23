@@ -1,0 +1,18 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "app/views"
+		},
+		{
+			"path": "test"
+		}
+	],
+	"settings": {
+		"terminal.integrated.env.osx": {
+			"PATH": "${HOME}/.rbenv/bin:${PATH}"
+		}
+	}
+}
