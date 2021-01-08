@@ -1,6 +1,12 @@
-<h1>Home</h1>
-<p>
-    This is the home page for the
-    <a href="https://railstutorial.jp/">Ruby on Rails Tutorial</a>
-    sample application.
-</p>
+<div class="center jumbotron">
+  <h1>Welcome to <%= Constants::CTF_NAME %></h1>
+
+  <h2>
+    You should be a good CTFer.
+  </h2>
+
+  <%= link_to "Sign up", signup_path, class: "btn btn-lg btn-primary" %>
+</div>
+
+<%= link_to image_tag("kam1tsur3.png", alt: "kam1tsur3 image", width: "200px"),
+                      "https://twitter.com/kam1tsur3" %>

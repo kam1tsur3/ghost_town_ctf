@@ -1,6 +1,6 @@
 module ApplicationHelper
     def full_title(page_title = '')
-        base_title = "Ghost Town CTF"
+        base_title = Constants::CTF_NAME
         if page_title.empty?
             base_title
         else 
