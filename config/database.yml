@@ -30,6 +30,7 @@ test:
   #port: 5432
 
 production:
+  url: <%= ENV['DATABASE_URL'] %>
   adapter: postgresql
   encoding: unicode
   # For details on connection pooling, see Rails configuration guide
