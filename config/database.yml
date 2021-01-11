@@ -20,21 +20,21 @@ test:
   <<: *default
   database: db/test.sqlite3
 
+#production:
+  #<<: *default
+  #database: db/production.sqlite3
+  #adapter: postgresql
+  #encoding: unicode
+  #pool: 5
+  #host: localhost
+  #port: 5432
+
 production:
-  <<: *default
-  database: db/production.sqlite3
   adapter: postgresql
   encoding: unicode
-  pool: 5
-  host: localhost
-  port: 5432
-
-#production:
- # adapter: postgresql
-  #encoding: unicode
   # For details on connection pooling, see Rails configuration guide
   # https://railsguides.jp/configuring.html#データベース接続をプールする
-  #pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  #database: db/production.sqlite3
-  #username: sample_app
-  #password: <%= ENV['SAMPLE_APP_DATABASE_PASSWORD'] %>
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  database: db/production.sqlite3
+  username: sample_app
+  password: <%= ENV['SAMPLE_APP_DATABASE_PASSWORD'] %>
