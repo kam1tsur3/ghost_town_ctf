@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   get '/home', to: 'static_pages#home'
   get '/rule', to: 'static_pages#rule'
   get '/signup', to: 'users#new'
+  resources :users
 end
