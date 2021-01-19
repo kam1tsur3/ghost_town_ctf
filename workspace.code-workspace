@@ -2,18 +2,6 @@
 	"folders": [
 		{
 			"path": "."
-		},
-		{
-			"path": "app/views"
-		},
-		{
-			"path": "test"
-		},
-		{
-			"path": "config"
-		},
-		{
-			"path": "app/controllers"
 		}
 	],
 	"settings": {
