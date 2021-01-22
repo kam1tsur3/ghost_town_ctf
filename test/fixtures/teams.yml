@@ -1,2 +1,9 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
+team1:
+  name: Team1
+  password_digest: <%= User.digest('password') %>
+
+team2:
+  name: Team2
+  password_digest: <%= User.digest('password') %>
