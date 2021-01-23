@@ -7,7 +7,9 @@ Rails.application.routes.draw do
   
   get '/create_team', to: 'teams#new'
   get '/my_team', to:'teams#my_team'
-  get '/reg_team', to:'teams#ret_team'
+  get '/reg_team', to:'teams#reg_team'
+  get '/join', to:'teams#join_form'
+  post '/join', to: 'teams#join_team'
   
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'

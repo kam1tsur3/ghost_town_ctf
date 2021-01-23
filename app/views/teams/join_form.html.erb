@@ -1,0 +1,16 @@
+<% provide(:title, 'Join team') %>
+<h1>Join team</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_tag("/join", method: "post") do %>
+      <%= label_tag(:name, "Team name") %>
+      <%= text_field_tag(:name) %>
+
+      <%= label_tag(:password, "password") %>
+      <%= password_field_tag(:password) %>
+
+      <%= submit_tag "Join team", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

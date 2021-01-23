@@ -1,6 +1,8 @@
 class TeamsController < ApplicationController
-  before_action :logged_in_user, only: [:new, :create, :my_team]
-  before_action :not_belong_to_team, only: [:new, :create]
+  before_action :logged_in_user, only: 
+    [:new, :create, :reg_team, :join_form, :join_team, :my_team]
+  before_action :not_belong_to_team, only: 
+    [:new, :create, :reg_team, :join_form, :join_team]
 
   def new
     #ログインユーザかつチームに所属していない
@@ -34,11 +36,11 @@ class TeamsController < ApplicationController
   end
 
   def edit
-    #アドミンだけでいいかな
+    #leader, adminだけでいいかな
   end
 
   def update
-    #アドミンだけでいいかな
+    #leader, adminだけでいいかな
   end
 
   def delete
@@ -47,7 +49,22 @@ class TeamsController < ApplicationController
 
   # RESTfulじゃない独自パス
 
-  def join
+  # GET /join 
+  def join_form
+  end
+
+  # POST /join 
+  def join_team
+    user = current_user
+    team = Team.find_by(name: params[:name])
+    if user && team && team.authenticate(params[:password])
+      user.update_attribute(:team_id, team.id)
+      flash[:success] = "Successfully join team"
+      redirect_to team
+    else 
+      flash[:danger] = "Invalid team infomation"
+      render 'teams/join_form'
+    end
   end
 
   # 作成するか既存のチームに参加するか
@@ -58,7 +75,7 @@ class TeamsController < ApplicationController
     if @team = current_team(current_user)
       redirect_to @team
     else
-      render 'reg_team'
+      redirect_to reg_team_path
     end
   end
 

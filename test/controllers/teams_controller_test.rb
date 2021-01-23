@@ -23,6 +23,7 @@ class TeamsControllerTest < ActionDispatch::IntegrationTest
 
     log_in_as(@not_in_team_user)
     get my_team_path
+    follow_redirect!
     assert_template 'teams/reg_team'
   end
 end
