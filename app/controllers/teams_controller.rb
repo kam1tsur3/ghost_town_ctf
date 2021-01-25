@@ -12,10 +12,12 @@ class TeamsController < ApplicationController
   def show
     # ログインしているユーザのみ
     @team = Team.find(params[:id])
+    @members = User.where(team_id: @team.id)
     @leader = User.find(@team.leader_id)
   end
 
   def index
+    @teams = Team.paginate(page: params[:page])
   end
 
   def create
@@ -62,7 +64,7 @@ class TeamsController < ApplicationController
       flash[:success] = "Successfully join team"
       redirect_to team
     else 
-      flash[:danger] = "Invalid team infomation"
+      flash.now[:danger] = "Invalid team infomation"
       render 'teams/join_form'
     end
   end

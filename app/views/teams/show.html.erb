@@ -9,7 +9,16 @@
     <h2>point</h2>
 
     <h2>member</h2>
-      Leader: <%= @leader.name %>
+    <ul class="members">
+      <% @members.each do |member| %>
+        <li>
+          <%= link_to member.name, member %>
+          <% if member == @leader %>
+          | (Leader)
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
     <h2>submit</h2>
     </section>
   </aside>
