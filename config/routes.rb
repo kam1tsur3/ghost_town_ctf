@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'challenges/new'
   root 'static_pages#home'
   get '/home', to: 'static_pages#home'
   get '/rule', to: 'static_pages#rule'

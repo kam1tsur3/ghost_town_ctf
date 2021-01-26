@@ -10,7 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_20_173405) do
+ActiveRecord::Schema.define(version: 2021_01_26_162527) do
+
+  create_table "challenges", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.string "flag"
+    t.integer "point"
+    t.string "category"
+    t.string "file_path"
+    t.boolean "active", default: true
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["name"], name: "index_challenges_on_name", unique: true
+  end
 
   create_table "teams", force: :cascade do |t|
     t.string "name"
