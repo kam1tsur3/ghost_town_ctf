@@ -14,8 +14,13 @@ class ChallengesController < ApplicationController
     
     if upload_file &.original_filename
       tmp[:file_path] = 
-        Rails.root.join('public', 'chall', (Challenge.count+1).to_s, upload_file.original_filename)
-      Dir::mkdir(Rails.root.join('public', 'chall', (Challenge.count+1).to_s))
+        Rails.root.join('public', 'chall', upload_file.original_filename)
+      
+      if File.exist?(tmp[:file_path])
+        flash[:danger] = "File name has already been used."
+        redirect_to challenges_new_path
+        return
+      end
       File.open(tmp[:file_path], 'w+b') do |fp|
         fp.write upload_file.read
       end
@@ -39,12 +44,44 @@ class ChallengesController < ApplicationController
   end
 
   def edit
+    @chall = Challenge.find(params[:id])
   end
-
+  
   def update
+    @chall = Challenge.find(params[:id])
+    tmp = chall_params
+    upload_file = file_path_params[:file_path]
+
+    if upload_file &.original_filename
+      tmp[:file_path] = 
+        Rails.root.join('public', 'chall', upload_file.original_filename)
+      if tmp[:file_path].to_s != @chall.file_path && File.exist?(tmp[:file_path])
+        flash.now[:danger] = "File name has already been used."
+        render 'edit'
+        return
+      end
+
+      if @chall.file_path
+        File.delete(@chall.file_path)
+      end
+
+      File.open(tmp[:file_path], 'w+b') do |fp|
+        fp.write upload_file.read
+      end
+    end
+
+    if @chall.update(tmp)
+      flash[:success] = "Challenge updated"
+      redirect_to @chall
+    else
+      render 'edit'
+    end
   end
 
   def destroy
+    Challenge.find(params[:id]).destroy
+    flash[:success] = "Challenge deleted"
+    redirect_to challenges_path
   end
 
   # original
