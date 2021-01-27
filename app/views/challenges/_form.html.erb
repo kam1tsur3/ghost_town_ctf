@@ -1,0 +1,28 @@
+<%= form_with(model: @chall, local: true) do |c| %>
+  <%= render 'shared/chall_error_messages' %>
+
+  <%= c.label :name %>
+  <%= c.text_field :name, class: 'form-control' %>
+
+  <%= c.label :description %>
+  <%= c.text_area :description, class: 'form-control' %>
+
+  <%= c.label :flag %>
+  <%= c.text_field :flag, class: 'form-control' %>
+
+  <%= c.label :point %>
+  <%= c.number_field :point, class: 'form-control' %>
+ 
+  <%= c.label :file_path, "Upload file" %>
+  <%= c.file_field :file_path %>
+  
+  <%= c.label :category %>
+  <%= c.text_field :category, class: 'form-control' %>
+
+  <%= c.label :active %>
+
+  Active<%= c.radio_button :active, true %>
+  Inactive<%= c.radio_button :active, false %>
+
+  <%= c.submit "Create challenge", class: "btn btn-primary" %>
+<% end %>

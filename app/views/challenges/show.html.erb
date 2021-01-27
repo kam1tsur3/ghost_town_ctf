@@ -1,0 +1,23 @@
+<% provide(:title, @chall.name) %>
+
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+      <h1>
+        <%= @chall.name %>
+      </h1>
+      <h2>
+        <%= @chall.description %>
+      </h2>
+      <h2>
+        genre: <%= @chall.category %>
+      </h2>
+      <h2>
+        point: <%= @chall.point %>
+      </h2>
+      <% if @chall.file_path %>
+      file: <%= link_to 'download', download_path(:chall_id => @chall.id), class: 'btn btn-info'%>
+      <% end %>
+    </section>
+  </aside>
+</div>
