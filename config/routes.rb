@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'challenges/new'
   root 'static_pages#home'
   get '/home', to: 'static_pages#home'
   get '/rule', to: 'static_pages#rule'
@@ -17,6 +16,9 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
  
   get '/download', to: 'challenges#download'
+  
+  get '/scoreboard', to: 'submits#scoreboard'
+  post '/submit', to: 'submits#submit'
 
   resources :users
   resources :teams
