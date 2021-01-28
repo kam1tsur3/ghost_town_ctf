@@ -18,6 +18,7 @@ User.create!(name: "kam1tsur3",
   team_id = n+2
   User.create!(name: name, email: email, password: password, password_confirmation: password, team_id: team_id)
 end
+
 Team.create!(name: "KUDoS",
   password: "password",
   password_confirmation: "password",
@@ -30,3 +31,12 @@ Team.create!(name: "KUDoS",
   Team.create!(name: name, password: password, password_confirmation: password, leader_id: leader_id)
 end
 
+Challenge.create!(
+  name: "Welcome",
+  description: "flag{welcome_to_ghost_town_ctf}",
+  flag: "flag{welcome_to_ghost_town_ctf}",
+  point: 500,
+  category: "warmup",
+  file_path: nil,
+  active: true
+)
