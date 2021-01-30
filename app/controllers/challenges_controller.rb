@@ -3,6 +3,8 @@ class ChallengesController < ApplicationController
     [:new, :create, :show, :index, :edit, :update, :destroy, :download]
   before_action :admin_user, only: 
     [:new, :create, :edit, :update, :destroy]
+  before_action :belong_to_team, only:
+    [:index, :show, :download]
   
   def new
     @chall = Challenge.new
@@ -105,16 +107,4 @@ class ChallengesController < ApplicationController
     def file_path_params
       params.require(:challenge).permit(:file_path)
     end
-
-    def logged_in_user
-      unless logged_in?
-        flash[:danger] = "Please log in."
-        redirect_to login_url
-      end
-    end
-
-    def admin_user
-      redirect_to(root_url) unless current_user.admin?
-    end
-
 end

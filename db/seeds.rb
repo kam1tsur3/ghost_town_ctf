@@ -40,3 +40,15 @@ Challenge.create!(
   file_path: nil,
   active: true
 )
+
+Challenge.create!(
+  name: "Follow the rule",
+  description: "Have you checked the rule already?",
+  flag: "flag{you_should_check_rule_before_playing!}",
+  point: 500,
+  category: "misc",
+  file_path: nil,
+  active: true
+)
+
+

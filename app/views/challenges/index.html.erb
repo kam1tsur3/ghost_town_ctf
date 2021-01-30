@@ -14,3 +14,13 @@
     <% end %>
   <% end %>
 </ul>
+<% @challs.each do |chall| %>
+  <% if current_user.admin? || chall.active %>
+    <%= link_to(chall) do %>
+    <div class="linkbox <%= 'solved' if Submit.where(chal_id: chall.id).where(team_id: current_user.id).length != 0 %>">
+      <p><%= chall.name %></p>
+      <p><%= chall.point %></p>
+    </div>
+    <% end %>
+  <% end %>
+<% end %>

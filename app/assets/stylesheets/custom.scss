@@ -84,6 +84,8 @@ p {
 footer {
   margin-top: 45px;
   padding-top: 5px;
+  margin-left: 20px;
+  margin-right: 20px;
   border-top: 1px solid $gray-medium-light;
   color: $gray-light;
   a {
@@ -195,9 +197,27 @@ input {
 .users, .teams {
   list-style: none;
   margin: 0;
+  font-size: large;
   li {
     overflow: auto;
     padding: 10px 0;
     border-bottom: 1px solid $gray-lighter;
+  }
+}
+
+label {
+  color: white;
+}
+
+.row {
+  h2 {
+    color: white;
+  }
+}
+
+.challenges {
+  text-align: center;
+  label {
+    font-family: 'Courier', Courier, monospace;
   }
 }
