@@ -1,0 +1,23 @@
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h1><%= @chall.name %></h1>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      
+      <h2>
+        <%= @chall.description %>
+      </h2>
+      <h2>
+        genre: <%= @chall.category %>
+      </h2>
+      <h2>
+        point: <%= @chall.point %>
+      </h2>
+      <% if @chall.file_path %>
+      file: <%= link_to 'download', download_path(:chall_id => @chall.id), class: 'btn btn-info'%>
+      <% end %>
+    </div>
+  </div>
+</div>
