@@ -21,7 +21,7 @@ module SubmitsHelper
       end
     end
     scores.sort do |a, b|
-      [-a[:point], a[:last_submit]] <=> [-b[:point], b[:last_submit]]
+      [a[:point], a[:last_submit]] <=> [b[:point], b[:last_submit]]
     end
     return scores
   end
