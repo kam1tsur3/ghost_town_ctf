@@ -88,8 +88,4 @@ class TeamsController < ApplicationController
       params.require(:team).permit(:name, :password, :password_confirmation)
     end
 
-    #def not_belong_to_team
-    #  redirect_to(root_url) unless current_user.team_id.nil?
-    #end
-
 end

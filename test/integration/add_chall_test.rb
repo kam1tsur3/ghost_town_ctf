@@ -11,9 +11,6 @@ class AddChallTest < ActionDispatch::IntegrationTest
 
   test "should redirect by access of non admin" do
     log_in_as(@not_admin)
-    # new
-    get challenges_new_path
-    assert_redirected_to root_url
     # create
     post challenges_path, params: { challenge: {
       name: "test",
