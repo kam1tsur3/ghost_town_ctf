@@ -2,7 +2,7 @@ class ChallengesController < ApplicationController
   before_action :logged_in_user, only: 
     [:new, :create, :show, :index, :edit, :update, :destroy, :download]
   before_action :admin_user, only: 
-    [:new, :create, :edit, :update, :destroy]
+    [:new, :create, :admin, :edit, :update, :destroy]
   before_action :belong_to_team, only:
     [:index, :show, :download]
   
@@ -84,6 +84,10 @@ class ChallengesController < ApplicationController
     Challenge.find(params[:id]).destroy
     flash[:success] = "Challenge deleted"
     redirect_to challenges_path
+  end
+
+  def admin
+    @challs = Challenge.all 
   end
 
   # original

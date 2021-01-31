@@ -1,25 +1,53 @@
 <% provide(:title, @team.name) %>
-<div class="row">
-  <aside class="col-md-4">
-    <section class="team_info">
-    <h1>
-      <%= @team.name %>
-    </h1>
-    <h2>Rank</h2>
-    <h2>point</h2>
-
-    <h2>member</h2>
-    <ul class="members">
-      <% @members.each do |member| %>
-        <li>
-          <%= link_to member.name, member %>
-          <% if member == @leader %>
-          | (Leader)
-          <% end %>
-        </li>
+<div class="row team">
+  <h1>
+    <%= @team.name %>
+  </h1>
+  <h2>Rank</h2>
+  <h3>
+    <% if @rank %>
+      <%= @rank[:place].ordinalize %>
+    <% else %>
+      Not ranked
+    <% end %>
+  </h3> 
+  
+  <h2>point</h2>
+  <h3>
+    <% if @rank %>
+      <%= @rank[:point] %>
+    <% else %>
+      Not solved
+    <% end %>
+  </h3>
+  
+  <h2>member</h2>
+  <ul class="members">
+    <% @members.each do |member| %>
+      <li>
+        <%= link_to member.name, member %>
+        <% if member == @leader %>
+         (Leader)
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+  
+  <h2>submit</h2>
+    <table>
+      <tr>
+          <th>challenge name</th>
+          <th>submitted by</th>
+          <th>point</th>
+          <th>solved at</th>
+      </tr>
+      <% @submits.each do |submit| %>
+      <tr>
+          <td><%= Challenge.find(submit.chal_id).name %></td>
+          <td><%= User.find(submit.user_id).name %></td>
+          <td><%= Challenge.find(submit.chal_id).point %></td>
+          <td><%= submit.created_at %></td>
+      </tr>
       <% end %>
-    </ul>
-    <h2>submit</h2>
-    </section>
-  </aside>
+  </table> 
 </div>

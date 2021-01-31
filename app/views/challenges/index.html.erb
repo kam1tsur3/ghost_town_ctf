@@ -1,23 +1,10 @@
 <% provide(:title, 'Challenges') %>
 <h1>Challenges</h1>
 
-<ul class="challenges">
-  <% @challs.each do |chall| %>
-    <% if current_user.admin? || chall.active %>
-      <li>
-        <%= link_to chall.name, chall %>
-        <% if current_user.admin? %>
-        | <%= link_to "edit", edit_challenge_path(chall)%>
-        | <%= link_to "delete", chall, method: :delete, data: {confirm: "You sure?"} %>
-        <% end %>
-      </li>
-    <% end %>
-  <% end %>
-</ul>
 <% @challs.each do |chall| %>
   <% if current_user.admin? || chall.active %>
     <%= link_to(chall) do %>
-    <div class="linkbox <%= 'solved' if Submit.where(chal_id: chall.id).where(team_id: current_user.id).length != 0 %>">
+    <div class="linkbox <%= 'solved' if Submit.where(chal_id: chall.id).where(team_id: current_user.team_id).length != 0 %>">
       <p><%= chall.name %></p>
       <p><%= chall.point %></p>
     </div>

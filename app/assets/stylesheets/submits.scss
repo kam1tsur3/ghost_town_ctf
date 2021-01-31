@@ -1,3 +1,20 @@
 // Place all the styles related to the Submits controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.scoreboard {
+  table {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: large;
+    th {
+      text-align: center;
+      width: 300px;
+      height: 50px;
+    }
+    td {
+      text-align: center;
+      width: 300px;
+      height: 50px;
+    }
+    color: white;
+  }
+}

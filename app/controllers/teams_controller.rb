@@ -14,6 +14,8 @@ class TeamsController < ApplicationController
     @team = Team.find(params[:id])
     @members = User.where(team_id: @team.id)
     @leader = User.find(@team.leader_id)
+    @submits = team_submit(@team.id)
+    @rank = team_rank(@team.id)
   end
 
   def index

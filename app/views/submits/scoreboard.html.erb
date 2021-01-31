@@ -1,2 +1,18 @@
 <% provide(:title, 'Scoreboard') %>
 <h1>Scoreboard</h1>
+<div class="scoreboard">
+  <table align="center">
+    <tr>
+      <th>Place</th>
+      <th>Team name</th>
+      <th>Point</th>
+    </tr>
+    <% @ranks.each_with_index do |rank, i| %>
+    <tr>
+      <td><%= (i+1)%></td>
+      <td><%= Team.find(rank[:team_id]).name %></td>
+      <td><%= rank[:point]%></td>
+    </tr>
+    <% end %>
+  </table>
+</div>

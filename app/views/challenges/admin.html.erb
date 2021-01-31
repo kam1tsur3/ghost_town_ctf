@@ -1,0 +1,16 @@
+<% provide(:title, 'Admin') %>
+<h1>Challenges</h1>
+
+<ul class="challenges">
+  <% @challs.each do |chall| %>
+    <% if current_user.admin? || chall.active %>
+      <li>
+        <%= link_to chall.name, chall %>
+        <% if current_user.admin? %>
+        | <%= link_to "edit", edit_challenge_path(chall)%>
+        | <%= link_to "delete", chall, method: :delete, data: {confirm: "You sure?"} %>
+        <% end %>
+      </li>
+    <% end %>
+  <% end %>
+</ul>

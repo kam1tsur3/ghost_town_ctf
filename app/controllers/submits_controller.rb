@@ -6,6 +6,7 @@ class SubmitsController < ApplicationController
 
   #get /scoreboard
   def scoreboard
+    @ranks = get_scoreboard
   end
 
   #post /submit

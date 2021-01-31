@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
  
   get '/download', to: 'challenges#download'
+  get '/admin', to: 'challenges#admin'
   
   get '/scoreboard', to: 'submits#scoreboard'
   post '/submit', to: 'submits#submit'
