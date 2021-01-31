@@ -20,8 +20,8 @@ module SubmitsHelper
         scores << {team_id: submit.team_id, point: Challenge.find(submit.chal_id).point, last_submit: submit.created_at}
       end
     end
-    scores.sort do |a, b|
-      [a[:point], a[:last_submit]] <=> [b[:point], b[:last_submit]]
+    scores.sort! do |a, b|
+      [-a[:point], a[:last_submit]] <=> [-b[:point], b[:last_submit]]
     end
     return scores
   end
